@@ -77,30 +77,30 @@ class Deck
                 this->HandCards[i].suit = 0;
                 this->HandCards[i].value = 0;
             }
-            DeckStart = &this->CardDeck[0];
             Winnings = 5;
             Draw(false);
         }
 
         void Draw(bool Jokers){
             shuffleCards();
+            this->DeckStart = &this->CardDeck[0];
             for(int i = 0; i < HAND_SIZE; i++)
             {
                 if (Jokers)
                 {
-                    this->HandCards[i].value = GetCardValue(*DeckStart);
-                    this->HandCards[i].suit = GetCardSuit(*DeckStart);
-                    DeckStart++;
+                    this->HandCards[i].value = GetCardValue(*this->DeckStart);
+                    this->HandCards[i].suit = GetCardSuit(*this->DeckStart);
+                    this->DeckStart++;
                 }
                 else
                 {
-                    if(*DeckStart == 53 || *DeckStart == 54) // Check for a Joker
-                        DeckStart++; // Skip to Next Card
-                    if(*DeckStart == 53 || *DeckStart == 54) // Check for a Joker (Only 2 in a deck, so we check Twice)
-                        DeckStart++;
-                    this->HandCards[i].value = GetCardValue(*DeckStart);
-                    this->HandCards[i].suit = GetCardSuit(*DeckStart);
-                    DeckStart++;
+                    if(*this->DeckStart == 53 || *this->DeckStart == 54) // Check for a Joker
+                        this->DeckStart++; // Skip to Next Card
+                    if(*this->DeckStart == 53 || *this->DeckStart == 54) // Check for a Joker (Only 2 in a deck, so we check Twice)
+                        this->DeckStart++;
+                    this->HandCards[i].value = GetCardValue(*this->DeckStart);
+                    this->HandCards[i].suit = GetCardSuit(*this->DeckStart);
+                    this->DeckStart++;
                 }
             }
             this->MaxReplace = HandHasAce()? 4 : 3;
@@ -109,7 +109,7 @@ class Deck
         bool HandHasAce() {
             for (int i = 0; i < HAND_SIZE; i++)
             {
-                if(this->HandCards[i].value)
+                if(this->HandCards[i].value == 1)
                     return true;
             }
             return false;
@@ -125,13 +125,14 @@ class Deck
             {
                 if(this->ReplacePositions[i]) // If a position is true, replace that card
                 {
-                    this->HandCards[i].value = GetCardValue(*DeckStart);
-                    this->HandCards[i].suit = GetCardSuit(*DeckStart);
-                    DeckStart++;
+                    this->HandCards[i].value = GetCardValue(*this->DeckStart);
+                    this->HandCards[i].suit = GetCardSuit(*this->DeckStart);
+                    this->DeckStart++;
                 }
             }
         }
         void ResetReplace(){
+            this->NumReplaced = 0;
             for(int i = 0; i < HAND_SIZE; i++)
                 this->ReplacePositions[i] = false;
         } 

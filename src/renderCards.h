@@ -69,7 +69,7 @@ void RenderWinnings(int winnings, int previousWin, int maxDiscard)
 
     if (previousWin == -1)
     {
-        std::cout << winStr << "\n";
+        std::cout << winStr << "\t\tNo Win\n";
         return;
     }
 
@@ -135,7 +135,9 @@ void RenderHold(bool ReplacePositions[])
 void RenderCards(Card card[])
 {
     // Set Background to Green
-    system("clear");
+    #ifndef DEBUG
+        system("clear");
+    #endif
 
     std::string Top;
     std::string Middle1;

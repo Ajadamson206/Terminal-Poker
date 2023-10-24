@@ -31,7 +31,9 @@ int main()
     // Program Loop
     while(!quit)
     {
-        fflush(stdout);
+        #ifndef DEBUG
+            fflush(stdout);
+        #endif
         // Renders
         
         RenderCards(MainDeck->HandCards);
@@ -86,7 +88,7 @@ int main()
         if ((MainDeck->Winnings) == 0)
             quit = 0;
     }
-    
+
     // Reset
     printf("\033[0m");
     printf("\e[?25h");

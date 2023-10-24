@@ -1,0 +1,45 @@
+4 4 4 8 8
+ 1 1 0 1
+4 4 8 9 9
+ 1 0 0 1
+4 4 8 8 9
+ 1 0 1 0
+
+1 2 2 3 3
+ 0 1 0 1
+1 2 3 4 5
+ 1 1 1 1
+
+0000 0 - No Pair - 1 2 3 4 6
+0001 1 - 1 Pair - 1 2 3 4 4
+0010 2 - 1 Pair - 1 2 3 3 4
+0011 3 - 3 of a kind - 1 2 3 3 3
+0100 4 - 1 Pair - 1 2 2 3 4
+0101 5 - 2 Pair - 1 2 2 3 3
+0110 6 - 3 of a kind - 1 2 2 2 3
+0111 7 - 4 of a kind - 1 2 2 2 2
+1000 8 - 1 Pair - 1 1 2 3 4
+1001 9 - 2 Pair - 1 1 2 3 3
+1010 10 - 2 Pair - 1 1 2 2 3
+1011 11 - Full House - 1 1 2 2 2
+1100 12 - 3 of a kind - 1 1 1 2 3
+1101 13 - Full House - 1 1 1 2 2
+1110 14 - Four of a kind - 1 1 1 1 2
+1111 15 - Five Pair - 1 1 1 1 1
+
+No Pair
+    0
+One Pair
+    1 2 4 8
+Two Pair
+    5 9 10
+3 of a kind
+    3 6 12
+4 of a kind
+    7 14
+Full House
+    11 13
+Five of a kind
+    15
+
+1 2 3 4 5
